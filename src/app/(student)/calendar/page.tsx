@@ -110,6 +110,19 @@ export default function CalendarPage() {
   const [viewType, setViewType] = useState("month")
   const [eventFilter, setEventFilter] = useState("all")
 
+  // Add handlers for date and view type changes
+  const handlePreviousMonth = () => {
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))
+  }
+
+  const handleNextMonth = () => {
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))
+  }
+
+  const handleViewTypeChange = (value: string) => {
+    setViewType(value)
+  }
+
   const getEventTypeColor = (type: string) => {
     switch (type) {
       case "academic":
@@ -196,19 +209,26 @@ export default function CalendarPage() {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handlePreviousMonth}>
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <h2 className="text-lg font-semibold">
-                {currentDate.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-              </h2>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleNextMonth}>
                 <ChevronRight className="h-4 w-4" />
               </Button>
+              <span className="font-semibold">
+                {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+              </span>
             </div>
-            <Button variant="outline" size="sm">
-              Today
-            </Button>
+            <Select value={viewType} onValueChange={handleViewTypeChange}>
+              <SelectTrigger className="w-[120px]">
+                <SelectValue placeholder="View" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="month">Month</SelectItem>
+                <SelectItem value="week">Week</SelectItem>
+                <SelectItem value="day">Day</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="flex items-center gap-2">

@@ -313,8 +313,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "The Academic Portal has completely streamlined my university experience. Course registration is now a
-                  breeze, and I love being able to track my grades in real-time."
+                  &ldquo;The Academic Portal has completely streamlined my university experience. Course registration is now a
+                  breeze, and I love being able to track my grades in real-time.&rdquo;
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -336,8 +336,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "Managing my finances and tracking financial aid has never been easier. The payment system is secure
-                  and the interface is incredibly user-friendly."
+                  &ldquo;Managing my finances and tracking financial aid has never been easier. The payment system is secure
+                  and the interface is incredibly user-friendly.&rdquo;
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
@@ -359,8 +359,8 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "The mobile-responsive design means I can access everything I need from anywhere. It's like having my
-                  entire academic life in my pocket."
+                  &ldquo;The mobile-responsive design means I can access everything I need from anywhere. It&apos;s like having my
+                  entire academic life in my pocket.&rdquo;
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">

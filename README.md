@@ -104,6 +104,45 @@ Authentication is handled through Supabase, providing:
 - React Hook Form for form handling
 - Zod for schema validation
 
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Deploy to Vercel**
+   - Go to [Vercel](https://vercel.com)
+   - Sign up or log in with your GitHub account
+   - Click "New Project"
+   - Import your repository
+   - Configure your project:
+     - Framework Preset: Next.js
+     - Build Command: `bun run build`
+     - Output Directory: `.next`
+   - Add your environment variables:
+     ```
+     NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+     ```
+   - Click "Deploy"
+
+3. **Automatic Deployments**
+   - Vercel will automatically deploy your site when you push changes to your repository
+   - Each push to a branch will create a preview deployment
+   - Pushes to the main branch will create a production deployment
+
+4. **Custom Domain (Optional)**
+   - In your Vercel project settings, go to "Domains"
+   - Add your custom domain
+   - Follow Vercel's instructions to configure DNS settings
+
 ## 🤝 Contributing
 
 1. Fork the repository

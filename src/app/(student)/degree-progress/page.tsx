@@ -95,6 +95,10 @@ const requirements = [
 export default function DegreeProgressPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
 
+  const filteredRequirements = selectedCategory === "all" 
+    ? requirements 
+    : requirements.filter(req => req.category === selectedCategory)
+
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "completed":
@@ -200,7 +204,7 @@ export default function DegreeProgressPage() {
           </TabsList>
 
           <TabsContent value="requirements" className="space-y-6">
-            {requirements.map((category) => {
+            {filteredRequirements.map((category) => {
               const categoryProgress = (category.completedCredits / category.totalCredits) * 100
               
               return (

@@ -128,6 +128,25 @@ const courses = [
   },
 ]
 
+// Add type for course
+interface Course {
+  id: string
+  code: string
+  title: string
+  credits: number
+  department: string
+  level: string
+  description: string
+  prerequisites: string
+  instructor: string
+  schedule: string
+  location: string
+  capacity: number
+  enrolled: number
+  available: boolean
+  term: string
+}
+
 export default function CourseCatalogPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [departmentFilter, setDepartmentFilter] = useState("all")
@@ -151,7 +170,7 @@ export default function CourseCatalogPage() {
     return matchesSearch && matchesDepartment && matchesLevel && matchesAvailability
   })
 
-  const getAvailabilityBadge = (course: any) => {
+  const getAvailabilityBadge = (course: Course) => {
     if (course.available) {
       const spotsLeft = course.capacity - course.enrolled
       if (spotsLeft <= 3) {

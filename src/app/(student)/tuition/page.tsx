@@ -76,6 +76,10 @@ const financialAid = [
 export default function TuitionPage() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("")
 
+  const handlePaymentMethodChange = (method: string) => {
+    setSelectedPaymentMethod(method)
+  }
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -229,66 +233,38 @@ export default function TuitionPage() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="payment" className="space-y-4">
+          <TabsContent value="payment">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Make a Payment</CardTitle>
-                <CardDescription>Pay your tuition and fees securely online</CardDescription>
+                <CardTitle>Make a Payment</CardTitle>
+                <CardDescription>Select your preferred payment method</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="text-sm font-medium">Payment Amount</label>
-                  <div className="mt-1 relative">
-                    <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <input
-                      type="number"
-                      className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                      placeholder="0.00"
-                      defaultValue={currentBill.remainingBalance}
-                    />
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Button
+                      variant={selectedPaymentMethod === "credit" ? "default" : "outline"}
+                      className="w-full h-24 flex flex-col items-center justify-center gap-2"
+                      onClick={() => handlePaymentMethodChange("credit")}
+                    >
+                      <CreditCard className="h-6 w-6" />
+                      <span>Credit Card</span>
+                    </Button>
+                    <Button
+                      variant={selectedPaymentMethod === "bank" ? "default" : "outline"}
+                      className="w-full h-24 flex flex-col items-center justify-center gap-2"
+                      onClick={() => handlePaymentMethodChange("bank")}
+                    >
+                      <Calendar className="h-6 w-6" />
+                      <span>Bank Transfer</span>
+                    </Button>
                   </div>
-                </div>
-
-                <div>
-                  <label className="text-sm font-medium">Payment Method</label>
-                  <div className="mt-2 space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        id="bank-transfer"
-                        name="payment-method"
-                        value="bank-transfer"
-                        className="text-emerald-600"
-                      />
-                      <label htmlFor="bank-transfer" className="flex items-center gap-2">
-                        <CreditCard className="h-4 w-4" />
-                        Bank Transfer
-                      </label>
+                  {selectedPaymentMethod && (
+                    <div className="mt-4">
+                      <Button className="w-full">Proceed to Payment</Button>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        id="credit-card"
-                        name="payment-method"
-                        value="credit-card"
-                        className="text-emerald-600"
-                      />
-                      <label htmlFor="credit-card" className="flex items-center gap-2">
-                        <CreditCard className="h-4 w-4" />
-                        Credit/Debit Card
-                      </label>
-                    </div>
-                  </div>
+                  )}
                 </div>
-
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                  <p className="text-blue-700 text-sm">
-                    <strong>Note:</strong> A processing fee of 2.5% applies to credit card payments. Bank transfers are
-                    processed free of charge.
-                  </p>
-                </div>
-
-                <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Proceed to Payment</Button>
               </CardContent>
             </Card>
           </TabsContent>
